@@ -102,6 +102,101 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    //Resource: https://developer.chrome.com/docs/devtools/console/api#clears
+
+    let consoleLog = errorBtns[0];
+    consoleLog.addEventListener("click", function() {
+      console.log("Console Log Button");
+    });
+
+    let consoleError = errorBtns[1];
+    consoleError.addEventListener("click", function() {
+      console.error("Console Error Button");
+    });
+
+    let consoleCount = errorBtns[2];
+    consoleCount.addEventListener("click", function() {
+      console.count();
+    });
+
+    let consoleWarn = errorBtns[3];
+    consoleWarn.addEventListener("click", function() {
+      console.warn('warning!');
+    });
+
+    let consoleAssert = errorBtns[4];
+    consoleAssert.addEventListener("click", function() {
+      const a = 3;
+      const b = 4;
+      const reason = 'a is expected to be equal to b';
+      console.assert(a == b, {a, b, reason});
+    });
+
+    let consoleClear = errorBtns[5];
+    consoleClear.addEventListener("click", function() {
+      console.clear();
+    });
+
+    let consoleDir = errorBtns[6];
+    consoleDir.addEventListener("click", function() {
+      // Prints a JSON representation of the specified object.
+      console.dir(document.head);
+    });
+
+    let consoleDirX = errorBtns[7];
+    consoleDirX.addEventListener("click", function() {
+      // Prints an XML representation of the descendants of node.
+      console.dirxml(document);
+    });
+
+    let consoleGroupStart = errorBtns[8];
+    consoleGroupStart.addEventListener("click", function() {
+      console.group("Our group of messages start here");
+    });
+
+    let consoleGroupEnd = errorBtns[9];
+    consoleGroupEnd.addEventListener("click", function() {
+      console.groupEnd("Our group of messages start here");
+    });
+
+    let consoleTable = errorBtns[10];
+    consoleTable.addEventListener("click", function() {
+      let colors = [
+        {
+          French: 'bleu',
+          English: 'blue',
+        },
+        {
+          French: 'rose',
+          English: 'pink',
+          Favorite: 'yes',
+        },
+      ];
+      console.table(colors);
+    });
+
+    let startTimer = errorBtns[11];
+    startTimer.addEventListener("click", function() {
+      console.time();
+    });
+
+    let endTimer = errorBtns[12];
+    endTimer.addEventListener("click", function() {
+      console.timeEnd();
+    });
+
+    let consoleTrace = errorBtns[13];
+    consoleTrace.addEventListener("click", function() {
+      // The task forms a link between the creation context and the context of the async function. This link lets DevTools show better stack traces for async operations.
+      // This method is known as the Async Stack Tagging API
+      toTrace();
+    });
+
+    function toTrace(){
+      console.trace();
+    }
+
   </script>
 </body>
 
