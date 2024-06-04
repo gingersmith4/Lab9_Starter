@@ -22,7 +22,7 @@
     }
 
     output {
-      border: 1px solid gray;
+      border: 1px solid rgb(125, 183, 126);
       display: block;
       height: 18px;
       margin-top: 5px;
@@ -84,6 +84,7 @@
       <button>End Timer</button>
       <button>Console Trace</button>
       <button>Trigger a Global Error</button>
+      <button>Start Button</button>
     </section>
   </main>
 
@@ -193,9 +194,32 @@
       toTrace();
     });
 
+    //let started = true;
+    let started = false;
+    let startButton = errorBtns[14];
+    startButton.addEventListener("click", function() {
+      console.log("clicked");
+      started = true;
+      console.log(started);
+    });
     function toTrace(){
       console.trace();
+    };
+
+    class StartError extends Error {
+      constructor(message) {
+        super(message); //call parent constructor
+        this.name = "StartError"; 
+      }
     }
+    try {
+
+      if(started != true) throw new StartError("Have not clicked the start button yet");
+
+      } catch (err) {
+        console.log(err);
+        console.log(err.message);
+    };
 
   </script>
 </body>
