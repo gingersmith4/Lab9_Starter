@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "bb359807a598418dbdce11e4dcad36d8"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -196,7 +204,7 @@
 
     //let started = true;
     let started = false;
-    let startButton = errorBtns[14];
+    let startButton = errorBtns[15];
     startButton.addEventListener("click", function() {
       console.log("clicked");
       started = true;
@@ -220,6 +228,26 @@
         console.log(err);
         console.log(err.message);
     };
+
+    let globalButton = errorBtns[14];
+    globalButton.addEventListener("click", function() {
+      let a = "event";
+      let b = "source";
+      let c = "lineno";
+      let d = "colno";
+      let e = "error";
+      window.onerror = (a, b, c, d, e) => {
+        console.log(`message: ${a}`);
+        console.log(`source: ${b}`);
+        console.log(`lineno: ${c}`);
+        console.log(`colno: ${d}`);
+        console.log(`error: ${e}`);
+
+        return true;
+      };
+      throw window.onerror(a,b,c,d,e);
+    }
+    )
 
   </script>
 </body>
